@@ -1,4 +1,5 @@
 import axios from 'axios'
+import join from 'url-join'
 import store from '~/store'
 import router from '~/router'
 import swal from 'sweetalert2'
@@ -10,6 +11,7 @@ axios.interceptors.request.use(request => {
     request.headers.common['Authorization'] = `Bearer ${token}`
   }
 
+  request.url = join('http://192.168.33.101:82/api', request.url)
   // request.headers['X-Socket-Id'] = Echo.socketId()
 
   return request

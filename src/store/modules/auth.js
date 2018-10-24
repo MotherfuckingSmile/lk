@@ -50,7 +50,7 @@ export const actions = {
 
   async fetchUser ({ commit }) {
     try {
-      const { data } = await axios.get('http://192.168.33.101:82/api/user')
+      const { data } = await axios.get('/user')
 
       commit(types.FETCH_USER_SUCCESS, { user: data })
     } catch (e) {
@@ -64,14 +64,15 @@ export const actions = {
 
   async logout ({ commit }) {
     try {
-      await axios.post('/api/logout')
+      await axios.post('/logout')
+      commit(types.FETCH_USER_FAILURE)
     } catch (e) { }
 
     commit(types.LOGOUT)
   },
 
   async fetchOauthUrl (ctx, { provider }) {
-    const { data } = await axios.post(`/api/oauth/${provider}`)
+    const { data } = await axios.post(`/oauth/${provider}`)
 
     return data.url
   }
