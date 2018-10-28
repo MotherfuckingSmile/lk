@@ -8,4 +8,10 @@ export const UPDATE_USER = 'UPDATE_USER'
 // billing.js
 export const FETCH_ACCOUNT = 'FETCH_ACCOUNT'
 export const FETCH_SUBSCRIPTIONS = 'FETCH_SUBSCRIPTIONS'
-export const FETCH_SUBS_VIEW = 'FETCH_SUBS_VIEW'
+export const FETCH_SERVICES = 'FETCH_SERVICES'
+export const FETCH_CONTACTS = 'FETCH_CONTACTS'
+export const FETCH_TARIFFS = 'FETCH_TARIFFS'
+
+// meta.js
+export const SET_TITLE = 'SET_TITLE'
+export const SET_LINK = 'SET_LINK'

@@ -3,16 +3,14 @@
       <div style="width: 100%;">
         <img src="static/images/fortuna.png" class="logo">
         <br>
-        <div class="text-center code-desc">
-          Личный Кабинет
-        </div>
+        <img src="static/images/logo.png" class="logo">
         <br>
         <form @submit.prevent="login" @keydown="form.onKeydown($event)">
           <div class="von-input-wrapper">
             <label class="item item-borderless item-input von-input">
               <div class="hairline-top"></div>
               <span class="input-label">Лицевой счёт</span>
-              <input type="text" v-model="form.aid" autofocus>
+              <input type="number" v-model="form.aid" autofocus>
               <div class="hairline-bottom"></div>
             </label>
             <span class="input-clear"></span>
@@ -26,8 +24,8 @@
             </label>
             <span class="input-clear"></span>
           </div>
-          <div class="von-input-wrapper padding padding-top">
-            <button type="submit" class="button button-positive button-block">Войти</button>
+          <div class="von-input-wrapper padding-top">
+            <button type="submit" class="button button-positive button-full button-block">Войти</button>
           </div>
         </form>
       </div>

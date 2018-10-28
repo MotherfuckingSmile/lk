@@ -2,7 +2,8 @@
   <div>
     <logo-header></logo-header>
     <div class="page-content">
-      <h1 class="item item-divider text-center">Основные настройки</h1>
+      <p class="scnd-text">Телефон: 8-800-775-66-33
+        <br>support@fortuna-dv.ru</p>
         <div @click.prevent="logout" class="item item-borderless hl-item text-center" style="color: red;">
           <div class="hairline-top"></div>
           <div class="hairline-bottom"></div>

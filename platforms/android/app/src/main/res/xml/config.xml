@@ -4,9 +4,10 @@
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
-    <name>HelloCordova</name>
+    <name>Интернет-Фортуна ЛК</name>
+    <icon src="lkicon.jpg" />
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        Личный кабинет Интернет-Фортуна
     </description>
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Apache Cordova Team

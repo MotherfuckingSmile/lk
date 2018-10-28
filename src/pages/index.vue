@@ -2,9 +2,9 @@
   <div class="page has-navbar">
     <ion-tabs v-if="user" color="primary" tabs-style="tabs-positive">
       <ion-tab v-for="item in menu" :key="item.comp" :label="item.label" :icon="item.icon">
-        <transition name="slide" mode="out-in">
+        <!--<transition name="slide" mode="out-in">-->
           <component :is="item.comp"></component>
-        </transition>
+        <!--</transition>-->
       </ion-tab>
     </ion-tabs>
     <child v-else></child>
@@ -44,3 +44,10 @@ export default {
 }
 
 </script>
+<style>
+  .scnd-text{
+    color: rgba(102,102,102);
+    padding: 3px 0;
+    text-align: center;
+  }
+</style>

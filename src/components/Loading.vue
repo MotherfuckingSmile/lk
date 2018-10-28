@@ -6,7 +6,7 @@
       opacity: show ? 1 : 0,
       'background-color': canSuccess ? color : failedColor
     }"/>
-    <div :class="show ? 'loading-container visible active' : ''">
+    <!--<div :class="show ? 'loading-container visible active' : ''">
       <div class="loading">
         <div class="spinner spinner-ios">
           <svg viewBox="0 0 64 64">
@@ -52,7 +52,7 @@
         </div>
         <span class="tips">Загрузка</span>
       </div>
-    </div>
+    </div>-->
   </div>
 </template>
 

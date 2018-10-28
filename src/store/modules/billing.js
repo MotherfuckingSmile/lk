@@ -5,14 +5,18 @@ import * as types from '../mutation-types'
 export const state = {
   account: [],
   subscriptions: [],
-  subsView: []
+  services: [],
+  contacts: [],
+  tariffs: []
 }
 
 // getters
 export const getters = {
   account: state => state.account,
   subscriptions: state => state.subscriptions,
-  subsView: state => state.subsView
+  services: state => state.services,
+  contacts: state => state.contacts,
+  tariffs: state => state.tariffs
 }
 
 // mutations
@@ -23,8 +27,14 @@ export const mutations = {
   [types.FETCH_SUBSCRIPTIONS] (state, { subs }) {
     state.subscriptions = subs
   },
-  [types.FETCH_SUBS_VIEW] (state, { subsView }) {
-    state.subsView = subsView
+  [types.FETCH_SERVICES] (state, { services }) {
+    state.services = services
+  },
+  [types.FETCH_CONTACTS] (state, { contacts }) {
+    state.contacts = contacts
+  },
+  [types.FETCH_TARIFFS] (state, { tariffs }) {
+    state.tariffs = tariffs
   }
 }
 
@@ -49,14 +59,31 @@ export const actions = {
       console.log('FAILURE TO GET DATA.')
     }
   },
-  async fetchViewSubs ({ commit }) {
+  async fetchServices ({ commit }) {
     try {
-      const { data } = await axios.get('/subs/view')
+      const { data } = await axios.get('/cabinet/services/get')
 
-      commit(types.FETCH_SUBS_VIEW, { subsView: data })
+      commit(types.FETCH_SERVICES, { services: data })
+    } catch (e) {
+      console.log('FAILURE TO GET DATA.')
+    }
+  },
+  async fetchContacts ({ commit }) {
+    try {
+      const { data } = await axios.get('/cabinet/contacts/get')
+
+      commit(types.FETCH_CONTACTS, { contacts: data })
+    } catch (e) {
+      console.log('FAILURE TO GET DATA.')
+    }
+  },
+  async fetchTariffs ({ commit }) {
+    try {
+      const { data } = await axios.get('/cabinet/services/tariffs')
+
+      commit(types.FETCH_TARIFFS, { tariffs: data })
     } catch (e) {
       console.log('FAILURE TO GET DATA.')
     }
   }
-
 }
