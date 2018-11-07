@@ -41,7 +41,10 @@ export default{
   computed: {
     ...mapGetters({
       contacts: 'billing/contacts'
-    })
+    }),
+    errors () {
+      return this.form.errors.errors
+    }
   },
   async created () {
     this.refresh()
@@ -58,10 +61,23 @@ export default{
       if (this.form.phones[this.form.phones.length - 1].value !== '') { this.form.phones.push({id: this.form.phones[this.form.phones.length], value: ''}) }
     },
     async save () {
-      // const { data } =
-      await this.form.patch('/cabinet/contacts/update')
+      try {
+        const { data } = await this.form.patch('/cabinet/contacts/update')
+        if (data === 1) {
+          let data = {}
+          data.message = 'Данные сохранены'
+          console.log(data)
+          this.$toasted.global.successMessage(data)
+        }
+      } catch (e) {
+        if (this.errors.email) {
+          this.errors.message = this.errors.email[0]
+          this.$toasted.global.errorMessage(this.errors)
+        }
+      }
+
       // SHOW MODAL, UPDATE PAGE ETC...
-      this.refresh()
+      // this.refresh()
     }
   }
 }

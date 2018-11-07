@@ -39,7 +39,8 @@ export default{
         block_on: null,
         block_off: null
       }),
-      date: null
+      date: null,
+      toast: {}
     }
   },
   async created () {
@@ -59,12 +60,14 @@ export default{
       } else {
         return 'Разблокировать'
       }
+    },
+    errors () {
+      return this.form.errors.errors
     }
   },
   methods: {
     formatDate (date) {
       let arrDate = date.split('-')
-      // let date = new Date(arrDate[0], (arrDate[1] - 1), arrDate[2])
       return arrDate[2] + '.' + arrDate[1] + '.' + arrDate[0]
     },
     async blockAwait () {
@@ -74,22 +77,36 @@ export default{
       if ((remoteDate - curDate) > 0) {
         if (this.services[0].block === false) {
           this.form.block_on = this.date
+          this.toast.message = 'Блокировка запланирована'
         } else {
           this.form.block_off = this.date
+          this.toast.message = 'Разблокировка запланирована'
         }
-        await this.form.patch('/cabinet/services/block')
+        try {
+          await this.form.patch('/cabinet/services/block')
+          this.$toasted.global.successMessage(this.toast)
+        } catch (e) {
+          console.log(this.errors)
+        }
         this.$router.push({name: 'cabinet.service'})
       }
     },
     async blockNow () {
       this.form.block = !this.services[0].block
-      console.log(this.form.block)
-      await this.form.patch('/cabinet/services/block')
+      this.toast.message = this.form.block ? 'Услуга заблокирована' : 'Услуга разблокирована'
+      try {
+        await this.form.patch('/cabinet/services/block')
+        this.$toasted.global.successMessage(this.toast)
+      } catch (e) {
+        console.log(this.errors)
+      }
       this.$router.push({name: 'cabinet.service'})
     },
     async cancel () {
       this.form.block_on = null
       this.form.block_off = null
+      this.toast.message = 'Все изменения отменены'
+      this.$toasted.global.successMessage(this.toast)
       await this.form.patch('/cabinet/services/block')
       await this.$store.dispatch('billing/fetchServices')
     }

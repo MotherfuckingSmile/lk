@@ -3,7 +3,7 @@ import * as types from '../mutation-types'
 
 // state
 export const state = {
-  user: null,
+  user: localStorage.user ? localStorage.user : null,
   token: localStorage.token ? localStorage.token : null
 }
 
@@ -22,12 +22,14 @@ export const mutations = {
   },
 
   [types.FETCH_USER_SUCCESS] (state, { user }) {
-    state.user = user
+    state.user = user.aid
+    localStorage.setItem('user', user.aid)
   },
 
   [types.FETCH_USER_FAILURE] (state) {
     state.token = null
     localStorage.removeItem('token')
+    localStorage.removeItem('user')
   },
 
   [types.LOGOUT] (state) {
@@ -35,10 +37,11 @@ export const mutations = {
     state.token = null
 
     localStorage.removeItem('token')
+    localStorage.removeItem('user')
   },
 
   [types.UPDATE_USER] (state, { user }) {
-    state.user = user
+    state.user = user.aid
   }
 }
 
@@ -64,8 +67,12 @@ export const actions = {
 
   async logout ({ commit }) {
     try {
-      await axios.post('/logout')
-      commit(types.FETCH_USER_FAILURE)
+      await axios({
+        method: 'get',
+        url: '/logout?aid=' + state.user + '&push=' + localStorage.getItem('pushId')
+      })
+      commit(types.LOGOUT)
+      // commit(types.FETCH_USER_FAILURE)
     } catch (e) { }
 
     commit(types.LOGOUT)

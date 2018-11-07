@@ -12,9 +12,14 @@ export default{
 </script>
 <style scoped>
   .logo{
-
     display: block;
     height: 30px;
     margin: 7px auto;
+    padding: 5px 10px;
+    background: #fff;
+    border-radius: 30px;
+  }
+  .bar{
+    background: rgb(61,64,69);
   }
 </style>

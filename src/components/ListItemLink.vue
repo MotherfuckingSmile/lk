@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="{ name: link }" class="item item-borderless hl-item item-icon-right" style="color: #4a90e2;">
+  <router-link :to="{ name: link }" class="item item-borderless hl-item item-icon-right">
     <div class="hairline-top"></div>
     <div class="hairline-bottom"></div>
     {{ title }}
@@ -9,9 +9,15 @@
 </template>
 <script>
 export default {
+  // #4a90e2
   name: 'ListItemLink',
   props: [
     'link', 'title', 'content'
   ]
 }
 </script>
+<style>
+  .item{
+    background: transparent;
+  }
+</style>

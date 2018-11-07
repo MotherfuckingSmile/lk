@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "929467386603",
+    "firebase_url": "https://lkfortuna-1541470463071.firebaseio.com",
+    "project_id": "lkfortuna-1541470463071",
+    "storage_bucket": "lkfortuna-1541470463071.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:929467386603:android:99cd46edd5848e24",
+        "android_client_info": {
+          "package_name": "ru.fortuna_dv.lk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "929467386603-q36tp4bipnvh3o60k97s9ilvbus3efm5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnVJneNNMxrOXoHKvY0HeDII9FlwsC75E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

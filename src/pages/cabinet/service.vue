@@ -13,7 +13,7 @@
       <div v-if="sub.block_off !== null" class="item item-divider text-center">Запланирована разблокировка <br> на {{ formatDate(sub.block_off) }}</div>
       <div v-if="sub.alt_date !== null" class="item item-divider text-center">Запланирована смена тарифа <br> на {{ formatDate(sub.alt_date) }}</div>
       <br v-if="sub.block === false && !sub.block_on">
-      <div v-if="sub.sid === -1 && account.status === 'Активен'" class="list list-borderless hl-list list-ios">
+      <div v-if="sub.sid === -1 && account.status === 'Активен'" class="list list-borderless hl-list list-ios mi">
         <list-item-link :title="blockTitle" link="cabinet.serviceBlock"></list-item-link>
         <list-item-link title="Сменить тариф" link="cabinet.serviceSwitch"></list-item-link>
       </div>

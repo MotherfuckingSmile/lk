@@ -24,4 +24,5 @@ export default {
     this.$loading = this.$refs.loading
   }
 }
+
 </script>

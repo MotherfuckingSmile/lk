@@ -18,3 +18,9 @@ export default{
   }
 }
 </script>
+<style scoped>
+  .bar, .bar-light, .title, .button{
+    background: rgb(61,64,69) !important;
+    color: rgba(255,255,255,0.8) !important;
+  }
+</style>

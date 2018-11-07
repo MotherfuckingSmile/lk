@@ -1,6 +1,6 @@
 <template>
   <div class="page has-navbar">
-    <ion-tabs v-if="user" color="primary" tabs-style="tabs-positive">
+    <ion-tabs v-if="user" color="dark" tabs-style="tabs-positive">
       <ion-tab v-for="item in menu" :key="item.comp" :label="item.label" :icon="item.icon">
         <!--<transition name="slide" mode="out-in">-->
           <component :is="item.comp"></component>
@@ -31,11 +31,16 @@ export default {
   computed: mapGetters({
     user: 'auth/user'
   }),
+  mounted () {
+    if (this.user) {
+
+    }
+  },
   data () {
     return {
       menu: [
         { label: 'Кабинет', icon: 'home', link: 'cabinet', comp: 'cabinet' },
-        { label: 'Новости', icon: 'paper', link: 'cabinet', comp: 'news' },
+        { label: 'Обновления', icon: 'paper', link: 'cabinet', comp: 'news' },
         { label: 'Оплата', icon: 'card', link: 'cabinet', comp: 'payment' },
         { label: 'Настройки', icon: 'settings', link: 'settings', comp: 'settings' }
       ]
@@ -49,5 +54,25 @@ export default {
     color: rgba(102,102,102);
     padding: 3px 0;
     text-align: center;
+  }
+  .toasted-left{
+    justify-content: start !important;
+  }
+  .page-content{
+    background: transparent !important;
+  }
+  .item-divider{
+    background: transparent !important;
+    color: rgba(255,255,255,0.8);
+  }
+  .list{
+    border: solid 1px rgba(54,57,62,1) !important;
+    box-shadow: 0px 0px 2px rgb(105,111,117), inset 0px 1px 2px -1px #CCC, inset 0px -1px 2px -1px #CCC !important;
+  }
+  .list-ios{
+    background: transparent !important;
+  }
+  .page{
+    background: rgb(92,94,98);
   }
 </style>

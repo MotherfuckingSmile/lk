@@ -1,4 +1,7 @@
-#Mon Oct 29 08:51:31 VLAT 2018
+#Wed Nov 07 19:05:08 VLAT 2018
 base.0=/home/slk/hybrid/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0
+path.1=classes2.dex
+renamed.1=classes2.dex
 path.0=classes.dex
 renamed.0=classes.dex
+base.1=/home/slk/hybrid/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0

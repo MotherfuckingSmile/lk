@@ -2,9 +2,11 @@
 <template>
   <div>
     <logo-header v-if="title === ''"></logo-header>
-    <back-header v-else :link="link" :title="title"></back-header>
+     <back-header v-else :link="link" :title="title"></back-header>
     <transition :name="transitionName" mode="out-in">
-      <router-view style="animation-duration: 0.3s"></router-view>
+      <slot>
+        <router-view style="animation-duration: 0.3s"></router-view>
+      </slot>
     </transition>
   </div>
 </template>
@@ -30,3 +32,6 @@ export default{
   }
 }
 </script>
+<style>
+
+</style>

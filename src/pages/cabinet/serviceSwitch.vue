@@ -24,7 +24,8 @@ export default{
       form: new Form({
         tid: null,
         alt: null
-      })
+      }),
+      toast: {}
     }
   },
   async created () {
@@ -36,13 +37,22 @@ export default{
     ...mapGetters({
       tariffs: 'billing/tariffs',
       services: 'billing/services'
-    })
+    }),
+    errors () {
+      return this.form.errors.errors
+    }
   },
   methods: {
     async switchTariff (tid, alt = null) {
       this.form.alt = alt || null
       this.form.tid = tid
-      await this.form.patch('/cabinet/services/switch')
+      this.toast.message = this.form.alt ? 'Запланирована смена тарифа' : 'Смена тарифного плана'
+      try {
+        await this.form.patch('/cabinet/services/switch')
+        this.$toasted.global.successMessage(this.toast)
+      } catch (e) {
+        console.log(this.errors)
+      }
       this.$router.push({name: 'cabinet.service'})
     }
   }
